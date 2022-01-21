@@ -1,0 +1,404 @@
+#include<stdio.h>
+#include<stdlib.h>  
+#include<windows.h>
+#include<time.h>
+int usrScore = 0,compScore = 0;
+void checkOptions(int usr,int comp){
+	// 1 = scissor 2= paper 3=rock
+	if(usr == comp){
+		printf(" --------------------\n");
+		printf("|    Its a tie       |\n");
+		printf(" --------------------\n");
+	}
+	else if(usr == 1){
+		if(comp == 2){
+			printf(" --------------------\n");
+			printf("|      You Won :)    |\n");
+			printf("| You : Scissor      |\n");
+			printf("| Computer : Paper   |\n");
+			printf(" --------------------\n");
+			usrScore++;
+
+		}
+		else {
+			printf(" --------------------\n");
+			printf("|     You Lose :(    |\n");
+			printf("| You : Scissor      |\n");
+			printf("| Computer : Rock    |\n");
+			printf(" --------------------\n");
+
+			compScore++;
+		}
+	}
+	else if(usr == 2){
+		if(comp == 1){
+			printf(" --------------------\n");
+			printf("|      You Lose :(   |\n");
+			printf("| You : Paper        |\n");
+			printf("| Computer : Scissor |\n");
+			printf(" --------------------\n");
+		    compScore++;
+		}
+		else {
+			printf(" --------------------\n");
+			printf("|     You Won :)     |\n");
+			printf("| You : Paper        |\n");
+			printf("| Computer : Rock    |\n");
+			printf(" --------------------\n");
+
+			usrScore++;
+		}
+	}
+	else if(usr == 3){
+		if(comp == 1){
+			printf(" --------------------\n");
+			printf("|      You Won :)    |\n");
+			printf("| You : Rock        |\n");
+			printf("| Computer : Scissor |\n");
+			printf(" --------------------\n");
+			usrScore++;
+		}
+		else {
+			printf(" --------------------\n");
+			printf("|     You Lose :(    |\n");
+			printf("| You : Rock         |\n");
+			printf("| Computer : Paper    |\n");
+			printf(" --------------------\n");
+
+			compScore++;
+		}
+	}
+	else if(usr == 4){
+		printf(" --------------------\n");
+		if(usrScore > compScore)
+		printf("|      You Won :)    |\n");
+		else if (usrScore < compScore)
+		printf("|     You Lose :(    |\n");
+		else
+		printf("|      Its a tie     |\n");
+		printf("|     Final Score    |\n");
+		printf("| You : %d            |\n",usrScore);
+		printf("| Computer: %d        |\n",compScore);
+		printf(" --------------------\n");
+        printf("THANKYOU FOR PLAYING :)");
+		printf("\a");
+	}
+	else {
+		Beep(750,500);
+		printf("\n Invalid Option");
+	}
+
+}
+void mainrockpaperscissors() {
+int userChoice,compChoice;
+srand(time(0));
+printf("\t\t\t\t==========*Welcome to Rock, Paper & Scissor Game*==========");
+while(userChoice != 4){
+printf("\nPlease select the option: ");
+printf("\n1.Scissor");
+printf("\n2.Paper");
+printf("\n3.Rock");
+printf("\n4.Quit\n");
+scanf("%d",&userChoice);
+
+compChoice = (rand() % 3) + 1;   // If random numbers are generated with rand() without first calling srand(),
+				//your program will create the same sequence of numbers each time it runs.
+checkOptions(userChoice,compChoice);
+}
+}
+void guessthenumber(){
+    int number,guess,nguess=1;
+    srand(time(0));
+    number = rand()%100 + 1 ;//Generates a random number between 1 and 100
+    printf("\t\t\t\t==========*Welcome to Guess the Number game==========*\n\n");
+    //Keep running the loop until the number is guessed
+    do{
+        printf("Guess the number between 1 and 100\n");
+        scanf("%d",&guess);
+        if(guess>number){
+            printf("Lower the number please!\n");
+
+        }
+        else if(guess<number){
+            printf("Higher the number please!\n");
+        }
+        else{
+            printf("You guessed it in %d attempts!\n",nguess);
+        }
+        nguess++;
+    }while(guess!=number);
+
+}
+  
+  
+struct play {  
+            char name[20];  
+            int score;  
+            int rat;       //star ratings  
+}p;  
+    
+void start();  
+void help();  
+  
+void mainquiz()  
+{  
+      
+       int chc=0;  
+  
+     printf(" \n-------------------------------------~QUIZ GAME~----------------------------------\n\n\n\n");
+    printf(">PRESS 1 TO START THE GAME\n>PRESS 2 TO OPEN HELP MENU\n>PRESS 0 TO EXIT THE GAME\n");  
+    scanf("%d",&chc);  
+
+    switch(chc)  
+    {  
+        case 1:  
+        start();  
+        break;  
+
+        case 2:  
+        help();  
+        break;  
+    }  
+  
+  return ;  
+}  
+  
+void help()  
+{  
+     int ch;  
+  
+   printf("\n\n ************************* GAME HELP MENU *************************\n\n\n");  
+     printf("\n 1.There will be a total of 10 questions");  
+     printf("\n 2.You will be given 4 options and you have to press 1, 2 ,3 or 4 for the right option");  
+     printf("\n 3.Each question will carry 5 points");  
+     printf("\n 4.You will be asked questions continuously.");  
+     printf("\n 5.There is no negative marking for wrong answer");  
+  
+    printf("\n\n ************************* BEST OF LUCK *************************\n\n");  
+  
+  
+    printf("\n                     #TO CONTINUE - PRESS 1\n                  ");  
+    scanf("%d",&ch);  
+  
+    if(ch==1)  
+    {  
+        start();  
+    } 
+}  
+  
+void start()  
+{  
+          int ans ; 
+          int count=0;  
+          char rating[20];  
+  
+        
+   
+   
+  
+  
+        printf("\n                                        PLEASE ENTER YOUR NAME : ");  
+        scanf("%s",p.name);  
+
+  
+  
+  
+        printf("                 ************************ Welcome \" %s \"  to  Quiz Game *************************** \n\n", p.name);  
+  
+ 
+        printf("Q1. Who is the father of C language? \n 1) DENISH RITCHIE \t\t2) STEVE JOBS\n 3) CHARLES BABBAGE\t\t4) None of the above\n\n");  
+  
+        printf("Answer :  ");  
+        scanf("%d",&ans);  
+  
+        if(ans==1)  
+        {  
+            printf("!!!!!CORRECT!!!!!\n");  
+            ++count;  
+  
+        }  
+        else  
+        {  
+            printf("WRONG ANSWER :-((\n Correct Answer is\n\n");  
+        }  
+  
+        printf("\nQ2.Which statement is false ? \n1) A variable refers to a location in memory;\n2) A variable refers to a location in memory \n3) A single variable cannot be defined with two different types in the same scope\n4) A variable must be declared and defined at the same time\n\n");  
+        printf("Answer :  ");  
+        scanf("%d",&ans);  
+  
+        if(ans==4)  
+        {  
+            printf("!!!!!CORRECT!!!!!\n");  
+  
+                ++count;  
+  
+        }  
+        else  
+        {  
+            printf("WRONG ANSWER :-((\n Correct answer is  4. A variable must be declared and defined at the same time\n\n");  
+        }  
+  
+        printf("Q3. Size of an int data type is \n1) 2\t2) 4\n3) 8\t4) depends on compiler/system\n\n");  
+  
+        printf("Answer :  ");  
+        scanf("%d",&ans);  
+  
+        if(ans==4)  
+        {  
+            printf("!!!!!CORRECT!!!!!\n");  
+  
+                ++count;  
+        }  
+        else  
+        {  
+            printf("WRONG ANSWER :-((\n Correct answer is  4. depends on compiler/system\n\n");  
+        }  
+  
+  
+        printf("Q4. String concatenation means \n1) Extracting a substring out of a string.\t2) Comparing the two strings to define the larger one.\n3) Partitioning the string into two strings.\t4) Combining two strings.\n\n");  
+        printf("Answer :  ");  
+        scanf("%d",&ans);  
+        if(ans==4)  
+        {  
+            printf("!!!!!CORRECT!!!!!\n");  
+  
+                ++count;  
+        }  
+        else  
+        {  
+            printf("WRONG ANSWER :-((\n Correct answer is  4. Combining two strings\n\n");  
+        }  
+  
+        printf("Q5. C programs are converted into machine language with the help of \n1) Compiler\t\t2) Editor\n3) An operating system\t4) All of the above\n\n");  
+        printf("Answer :  ");  
+        scanf("%d",&ans);  
+        if(ans==1)  
+        {  
+            printf("!!!!!CORRECT!!!!!\n");  
+  
+                ++count;  
+        }  
+        else  
+        {  
+            printf("WRONG ANSWER :-((\n Correct answer is  1. Compiler\n\n");  
+        }  
+  
+        printf("Q6. C Language developed at \n1) AT & T Bell Laboratories of USA in 1970\t2) Cambridge University in 1972\n3) Sun Microsystems in 1973\t\t\t4) AT & T Bell Laboratories of USA in 1972\n\n");  
+        printf("Answer :  ");  
+        scanf("%d",&ans);  
+        if(ans==4)  
+        {  
+            printf("!!!!!CORRECT!!!!!\n");  
+  
+                ++count;  
+        }  
+        else  
+        {  
+            printf("WRONG ANSWER :-((\n Correct answer is  4.AT & T Bell Laboratories of USA in 1972\n\n");  
+        }  
+  
+        printf("Q7. Filename extension of C language is \n1) .cp\t\t2) .c\n3) .cl\t\t4) None of the above\n\n");  
+        printf("Answer :  ");  
+        scanf("%d",&ans);  
+        if(ans==2)  
+        {  
+            printf("!!!!!CORRECT!!!!!\n");  
+  
+                ++count;  
+        }  
+        else  
+        {  
+            printf("WRONG ANSWER :-((\n Correct answer is  2. .c\n\n");  
+        }  
+  
+        printf("Q8. C first appeared in\n1) 1972\t\t2) 1982\n3) 1970\t\t4) 1933\n\n");  
+        printf("Answer :  ");  
+        scanf("%d",&ans);  
+        if(ans==1)  
+        {  
+            printf("!!!!!CORRECT!!!!!\n");  
+  
+                ++count;  
+        }  
+        else  
+        {  
+            printf("WRONG ANSWER :-((\n Correct answer is  1. 1972\n\n");  
+        }  
+  
+        printf("Q9.  C is a\n1) general-purpose computer programming language  \t2) procedural computer programming language\n3) multi-paradigm computer programming language  \t4) All the above\n\n");  
+        printf("Answer :  ");  
+        scanf("%d",&ans);  
+        if(ans==4)  
+        {  
+            printf("!!!!!CORRECT!!!!!\n");  
+  
+                ++count;  
+        }  
+        else  
+        {  
+            printf("WRONG ANSWER :-((\n Correct answer is  4. All of the above\n\n");  
+        }  
+  
+        printf("Q10. Given b=110 and c=20. What will be the value of a after the execution of the following expression (a = b -= c *= 5) \n1) 230\t\t2) 345\n3) 550\t\t4) 450\n\n");  
+        printf(" Answer : ");  
+        scanf("%d",&ans);  
+        if(ans==4)  
+        {  
+            printf("!!!!!CORRECT!!!!!\n");  
+  
+                ++count;  
+        }  
+        else  
+        {  
+            printf("WRONG ANSWER :-((\n Correct answer is  4. 450 \n\n");  
+        }  
+  
+         
+       
+  
+         
+        if(count > 0)  
+        {  
+                printf("\t\t THANKS FOR PLAYING, \n\t\tYour Score = %d points \t", count*5);}
+                else
+                {printf("TRY AGAIN :-((");}
+  
+              
+}
+
+int main()
+{
+	int abc;
+	char ch;
+	printf("**************************************Hello! WELCOME TO OUR MINI PROJECT************************************\n\n");
+	do{
+		printf("PRESS 1 TO PLAY ROCK-PAPER-SCISSORS\nPRESS 2 FOR GUESS-THE-NUMBER\nPRESS 3 FOR QUIZ GAME\nPRESS 4 FOR EXIT\n");
+		scanf("%d",&abc);
+		if(abc==1)
+		{
+			mainrockpaperscissors();
+
+		}
+		else if(abc==2)
+		{
+            guessthenumber();
+		}
+		else if(abc==3)
+		{
+			mainquiz();
+		}
+		else if(abc==4){
+			printf("\t\t\t\tTHANK YOU!!!\nCONTRIBUTED BY SANCHITA AGRAWAL(RA2111026010320) , YASHIKA(RA2111026010321) , VASU RASTOGI (RA2111026010295)\n");
+		}
+		else
+		{
+			printf("\nInvalid option");
+			Beep(750,500);
+		}
+
+		printf("\nWOULD YOU LIKE TO GO BACK TO MENU(y/n)?\n");
+		scanf(" %c",&ch);
+	}
+	while(ch=='y');
+	return 0;
+}
